@@ -29,6 +29,9 @@ Thumbs.db
 desktop.ini
 ~$*
 
-# WorkBuddy 会话与记忆目录（不属于项目内容）
+# 本地文档原件（题目、报告等，不入库）
+*.docx
+
+# 本地工具与会话数据（不属于项目内容）
 .workbuddy/
 memory/

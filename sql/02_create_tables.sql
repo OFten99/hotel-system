@@ -78,7 +78,7 @@ CREATE TABLE user_accounts (
   employee_id INT NOT NULL UNIQUE COMMENT '关联员工',
   role_id INT NOT NULL COMMENT '角色编号',
   username VARCHAR(50) NOT NULL UNIQUE COMMENT '登录名',
-  password_hash VARCHAR(128) NOT NULL COMMENT '密码哈希，课程设计中可用明文模拟',
+  password_hash VARCHAR(128) NOT NULL COMMENT '密码哈希',
   account_status ENUM('启用','锁定') NOT NULL DEFAULT '启用' COMMENT '账号状态',
   last_login_at DATETIME NULL COMMENT '最近登录时间',
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',

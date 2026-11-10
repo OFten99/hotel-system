@@ -5,7 +5,7 @@ title MySQL 服务一键配置（请以管理员身份运行）
 :: ============================================================
 ::  MySQL Server 8.4 服务一键配置脚本
 ::  功能：初始化数据目录 -> 创建服务 MySQL84 -> 启动服务
-::        -> 设置 root 密码为 123456 -> 验证
+::        -> 设置 root 密码 -> 验证
 ::  用法：右键本文件 -> 以管理员身份运行
 :: ============================================================
 
@@ -22,7 +22,8 @@ set "MYSQL_HOME=C:\Program Files\MySQL\MySQL Server 8.4"
 set "MYSQL_BIN=%MYSQL_HOME%\bin"
 set "DATA_DIR=C:\ProgramData\MySQL\MySQL Server 8.4\Data"
 set "MY_INI=%MYSQL_HOME%\my.ini"
-set "MYSQL_PASSWORD=123456"
+set "MYSQL_PASSWORD="
+if "%MYSQL_PASSWORD%"=="" set /p MYSQL_PASSWORD=请输入要为 root 设置的密码: 
 
 echo ============================================================
 echo  MySQL Server 8.4 服务配置
@@ -93,14 +94,14 @@ if errorlevel 1 (
 )
 
 :: ---------- 5. 设置 root 密码 ----------
-echo [5/5] 设置 root 密码为 %MYSQL_PASSWORD% ...
+echo [5/5] 设置 root 密码 ...
 "%MYSQL_BIN%\mysql.exe" -h 127.0.0.1 -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '%MYSQL_PASSWORD%'; FLUSH PRIVILEGES;" >nul 2>&1
 if errorlevel 1 (
     echo.
     echo [提示] 密码设置未成功，可能之前已设置过密码。
-    echo        可稍后手动执行：mysql -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';"
+    echo        可稍后手动执行：mysql -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '你的密码';"
 ) else (
-    echo        root 密码已设置为 123456。
+    echo        root 密码已设置完成。
 )
 
 echo.
@@ -110,7 +111,7 @@ echo  安装配置完成，验证中...
 if errorlevel 1 (
     echo [警告] 验证未通过，请检查上述步骤。
 ) else (
-    echo [OK] MySQL 服务运行正常，root 密码为 123456。
+    echo [OK] MySQL 服务运行正常。
 )
 echo ============================================================
 echo.
