@@ -160,7 +160,7 @@ def main():
     if py_ok and dep_ok and mysql_ok and db_ok:
         print("全部检查通过，可以直接运行系统：")
         print("  命令行版：cd python && python app.py")
-        print("  Web 版：  cd web_app && python app.py  然后浏览器打开 http://127.0.0.1:5000")
+        print("  Web 版：  cd web_app && python app.py  然后浏览器打开 http://127.0.0.1:5001")
     else:
         print("存在未通过项，请按上面提示处理后重试。")
         if not mysql_ok:
