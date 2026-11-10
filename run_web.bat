@@ -19,7 +19,7 @@ echo.
 echo 提示：请先确认已执行过 init_database.py 初始化数据库。
 echo       若还没有，请先运行 python init_database.py。
 echo.
-echo 启动成功后，请在浏览器打开：http://127.0.0.1:5000
+echo 启动成功后，请在浏览器打开：http://127.0.0.1:5001
 echo 请不要关闭本窗口，关闭即停止服务。
 echo.
 python app.py
